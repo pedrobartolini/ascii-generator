@@ -7,8 +7,10 @@
 
 
 ### Example:
-`ascii-image-printer --image ./image.jpg --w 100 --h 100`
+`ascii-image-printer --image ./image.jpg --w 100 --h 50`
 
+Results in:
+![exampe](./example.png)
 
 
 
