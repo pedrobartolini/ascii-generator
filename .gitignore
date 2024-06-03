@@ -1,0 +1,5 @@
+/.vscode
+/Cargo.lock
+/image.png
+/rustfmt.toml
+/target
