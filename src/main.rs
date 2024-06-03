@@ -26,7 +26,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
    let mut max_width: u32 = 0;
    let mut max_height: u32 = 0;
 
-   for i in 0..args.len() {
+   const ERR_MSG: &str = "Usage: ascii-image-printer --image <image_path> --w <width> --h <height>";
+
+   if args.len() < 7 {
+      return Err(ERR_MSG.into());
+   }
+
+   for i in 1..args.len() {
       if args[i] == "--image" {
          image_path = &args[i + 1];
       } else if args[i] == "--w" {
@@ -36,12 +42,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
       }
    }
 
-   if image_path.is_empty() {
-      return Err("Please provide an image path".into());
-   }
-
-   if max_width == 0 || max_height == 0 {
-      return Err("Please provide width and height".into());
+   if image_path.is_empty() || max_width == 0 || max_height == 0 {
+      return Err(ERR_MSG.into());
    }
 
    let target_image = image::open(image_path)?.grayscale();
